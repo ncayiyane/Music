@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Radio Buttons</title>
+	<script src="https://dl.dropbox.com/s/2aqdwf56wzpjyqw/jamod.js?raw=1"></script>
+</head>
+<body>
+	<p><h2>Please select your interests field:</p></h2>
+	<div>
+		<input type="radio" name="size" value="Afro House King" id="s">
+		<label for="s">Afro House King</label>
+	</div><p></p>
+	<div>
+		<input type="radio" name="size" value="Google" id="m">
+		<label for="m">Searching</label>
+	</div><p></p>
+	<p><a id="output"></a></p>
+
+	<script>
+		const pages ={
+			"Afro House King": "https://afrohouseking.com",
+			"Google": "https://www.google.com"
+		};
+		
+		let rbs = document.querySelectorAll('input');
+		let radioButtons = document.querySelectorAll('input[name="size"]');
+		
+		onload = () => setAnchor();
+		
+	function setAnchor() {
+		let selectedValue;
+		let selectedName;
+		for (let rb of rbs) {
+		rb.addEventListener("change", () => {
+			for (const radioButton of radioButtons) {
+				if (radioButton.checked) {
+					selectedName = radioButton.value;
+					selectedValue = pages[selectedName];
+					break;
+				}
+			}
+			// show the output:
+			output.href = selectedValue;
+			output.innerText = selectedName;
+		});
+		}
+		}
+		
+	</script>
+</body>
+</html>
